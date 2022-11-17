@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/person/new}" th:object="${person}">
+
+    <div th:fragment="person-data" th:object="${person}" >
+
+        <div>
+            <label for="name">Имя</label>
+            <input type="text" th:field="*{name}" id="name">
+            <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+        </div>
+
+        <div>
+            <label for="surname">Фамилия</label>
+            <input type="text" th:field="*{surname}" id="surname">
+            <div style="color: red"  th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></div>
+        </div>
+
+        <div>
+            <label for="patronymic">Отчество</label>
+            <input type="text" th:field="*{patronymic}" id="patronymic">
+        </div>
+
+        <div>
+            <label for="birthDate">Дата рождения</label>
+            <input type="date" th:field="*{birthDate}" id="birthDate">
+            <div style="color: red"  th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}"></div>
+        </div>
+
+        <hr/>
+
+        <div>
+            <label for="city">Город</label>
+            <input type="text" th:field="*{city}" id="city">
+            <div style="color: red"  th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></div>
+        </div>
+
+        <div>
+            <label for="address">Адрес</label>
+            <input type="text" th:field="*{address}" id="address">
+        </div>
+
+        <div>
+            <label for="email">Эл. почта</label>
+            <input type="email" th:field="*{post}" id="email">
+            <div style="color: red"  th:if="${#fields.hasErrors('post')}" th:errors="*{post}"></div>
+        </div>
+
+        <hr/>
+
+        <div>
+            <label for="login">Логин</label>
+            <input type="text" th:field="*{login}" id="login">
+            <div style="color: red"  th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></div>
+        </div>
+
+        <div>
+            <label for="password">Пароль</label>
+            <input type="password" th:field="*{password}" id="password">
+            <div style="color: red"  th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+        </div>
+
+    </div>
+
+    <input type="submit" value="Зарегистрироваться">
+</form>
+
+</body>
+</html>

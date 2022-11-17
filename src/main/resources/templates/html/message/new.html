@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Написать сообщение</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/message/new}" th:object="${message}">
+
+    <div>
+        <label class="text" for="chat"> id чата </label>
+        <input name="chatId" id="chat">chat
+    </div>
+
+    <div>
+        <label class="text" for="user"> id автора </label>
+        <input name="personId" id="user">
+    </div>
+
+    <div th:fragment="message-text">
+        <label for="text">Введите текст</label>
+        <textarea id="text" th:field="*{text}" type="text"></textarea>
+        <div style="color: red"  th:if="${#fields.hasErrors('text')}" th:errors="*{text}"></div>
+    </div>
+
+    <br/>
+    <input type="submit" value="Отправить сообщение">
+</form>
+
+</body>
+</html>

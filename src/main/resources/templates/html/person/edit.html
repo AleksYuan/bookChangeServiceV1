@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:object="${person}">
+    <meta charset="UTF-8">
+    <title>bc.ru профиль</title>
+</head>
+<body>
+<form th:method="PATCH" th:action="@{/person/{id}/edit(id=${person.id})}" th:object="${person}">
+    <div th:insert="html/person/new :: person-data"/>
+    <input type="submit" value="Изменить данные">
+</form>
+</body>
+</html>

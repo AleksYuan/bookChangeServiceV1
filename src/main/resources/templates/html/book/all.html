@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title> bc.ru Книги </title>
+</head>
+<body>
+<table class="books-db">
+    <tr>
+        <th>id</th>
+        <th>Титл</th>
+        <th>Коментарий</th>
+        <th>Библиотека</th>
+        <th>Готовность отдать</th>
+        <th colspan="2">Функции</th>
+    </tr>
+
+    <th:block th:each="book : ${books}">
+        <tr>
+            <td th:text="${book.id}"/>
+            <td th:text="${book.author}"/>
+            <td th:text="${book.title}"/>
+            <td th:text="${book.comment}"/>
+            <td>
+                <span th:text="${book.library.id}" th:if="${book.library != null}"></span>
+                <span th:text="${'-'}" th:if="${book.library == null}">Male</span>
+            </td>
+            <td>
+               <p th:if="${book.status == true}"> да </p>
+               <span th:if="${book.status == false}"> нет </span>
+            </td>
+            <td><a th:href="${book.id}">Посмотреть</a></td>
+            <td><a th:href="${book.id} + '/edit'">Настроить</a></td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:object="${chat}" th:text="${chat.getTitle()}"></title>
+</head>
+<body>
+
+<b>Пользователи чата</b>
+
+<div>
+    <div th:each="person : ${chat.getPeople()}">
+        <label th:text="${'#' + person.id + '. ' +  person.getName() + ' ' + person.getSurname()}"/>
+    </div>
+</div>
+
+<hr/>
+<b>Сообщения</b>
+<p></p>
+
+<div>
+    <div th:each="message : ${chat.getMessages()}">
+        <label for="ms" th:text="${'юзер #' + message.getIdPerson()}"/>
+        <div>
+            <b id="ms" th:text="${message.getText()}"/>
+        </div>
+    </div>
+</div>
+
+<hr/>
+
+<form th:object="${message}" th:method="POST">
+    <div>
+        <label for="text"> Новое сообщение </label>
+        <textarea id="text" th:field="*{text}"></textarea>
+        <input type="submit" value="Отправить">
+    </div>
+</form>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title> bc.ru Пользователи</title>
+</head>
+<body>
+<table class="users-db">
+  <tr>
+    <th>Имя</th>
+    <th>Фамилия</th>
+    <th>Город</th>
+    <th colspan="2">Функции</th>
+  </tr>
+
+  <th:block th:each="person : ${people}">
+    <tr>
+      <td th:text="${person.name}"/>
+      <td th:text="${person.surname}"/>
+      <td th:text="${person.city}"/>
+      <td><a th:href="${'p2='+person.id}">Написать</a></td>
+      <td><a th:href="${person.id}">Книги</a></td>
+    </tr>
+  </th:block>
+</table>
+</body>
+</html>

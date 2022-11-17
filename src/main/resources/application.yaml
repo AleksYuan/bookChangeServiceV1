@@ -1,0 +1,25 @@
+spring:
+
+  jpa:
+    database: postgresql
+    #    show-sql: true
+    hibernate:
+      ddl-auto: update
+  #    properties:
+  #      hibernate:
+  #        format_sql: true
+
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/bookServiceDBV1
+    username: postgres
+    password: 12345
+
+  thymeleaf:
+    cache: false
+
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true

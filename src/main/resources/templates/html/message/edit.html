@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Параметры книги</title>
+</head>
+<body>
+<form th:method="PATCH" th:action="@{/message/{id}(id=${message.getId()})}" th:object="${message}">
+
+    <div th:fragment="message-text">
+        <label for="text">Сообщение</label>
+        <textarea id="text" th:field="*{text}" type="text"></textarea>
+    </div>
+
+    <hr/>
+    <input type="submit" value="Изменить">
+</form>
+<form th:method="DELETE" th:action="@{/message/{id}(id=${message.getId()})}" th:object="${message}">
+    <input type="submit" value="удалить сообщение">
+</form>
+
+</body>
+</html>

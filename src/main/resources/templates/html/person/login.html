@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Аутентификация пользователя</title>
+</head>
+<body>
+
+<form th:method="POST" th:object="${person}">
+
+    <div>
+        <label for="name"> Логин </label>
+        <input type="text" th:field="*{login}" id="name">
+    </div>
+
+    <div>
+        <label for="surname"> Пароль </label>
+        <input type="password" th:field="*{password}" id="surname">
+    </div>
+
+    <hr/>
+    <input type="submit" value="Войти">
+</form>
+
+</body>
+</html>

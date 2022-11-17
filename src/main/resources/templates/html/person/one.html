@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${'bc.ru' + person.name + ' ' + person.surname}">Title</title>
+</head>
+<body>
+
+<form th:method="GET" th:action="@{/person/all}" th:object="${person}">
+
+    <div th:fragment="person-data" th:object="${person}">
+
+        <div>
+            <label for="name">Имя: </label>
+            <b type="text" th:text="*{name}" id="name"></b>
+        </div>
+
+        <div>
+            <label for="surname">Фамилия: </label>
+            <b type="text" th:text="*{surname}" id="surname"></b>
+        </div>
+
+        <div>
+            <label for="patronymic">Отчество: </label>
+            <b type="text" th:text="*{patronymic}" id="patronymic"/>
+        </div>
+
+        <div>
+            <label for="birthDate">Дата рождения: </label>
+            <b type="date" th:text="*{birthDate}" id="birthDate"/>
+        </div>
+
+        <hr/>
+
+        <div>
+            <label for="city">Город: </label>
+            <b type="text" th:text="*{city}" id="city"/>
+        </div>
+
+        <div>
+            <label for="address">Адрес: </label>
+            <b type="text" th:text="*{address}" id="address"/>
+        </div>
+
+        <!--    <div>-->
+        <!--      <label for="email">Эл. почта</label>-->
+        <!--      <p type="email" th:field="*{post}" id="email">-->
+        <!--    </div>-->
+
+        <hr/>
+
+        <!--    <div>-->
+        <!--      <label for="login">Логин</label>-->
+        <!--      <p type="text" th:field="*{login}" id="login">-->
+        <!--    </div>-->
+
+        <!--    <div>-->
+        <!--      <label for="password">Пароль</label>-->
+        <!--      <p type="password" th:field="*{password}" id="password">-->
+        <!--    </div>-->
+
+    </div>
+
+    <input type="submit" value="Выйти">
+</form>
+
+</body>
+</html>

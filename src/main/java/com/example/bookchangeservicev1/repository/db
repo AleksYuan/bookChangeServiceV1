@@ -1,0 +1,9 @@
+INSERT INTO person (address, birth_date, city, login, name, password, post, surname)
+VALUES ('-', '2000-10-01', 'Санкт-петербург', 'Alex', 'Алексей', '12345', 'alex@mail.ru', 'Ян');
+
+INSERT INTO person (address, birth_date, city, login, name, password, patronymic, post, surname)
+VALUES ('Правды дом 4', '2000-10-01', 'Москва', 'Yana', 'Яна', '12345', 'Анатолиевна' , 'yana@yandex.ru', 'Петрова');
+
+INSERT INTO person (address, birth_date, city, login, name, password, patronymic, post, surname)
+VALUES ('-', '2000-10-01', 'Самара', 'Vasya', 'Вася', '12345', 'Васильевич' , 'vasya@yandex.ru', 'Иванов');
+

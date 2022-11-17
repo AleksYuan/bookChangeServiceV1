@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${'bc.ru' + 'сообщение'}">Title</title>
+</head>
+<body>
+
+<form th:method="GET" th:action="@{/message/all}" th:object="${message}">
+
+    <div th:fragment="message-data" th:object="${message}">
+
+        <div>
+            <label for="name">Номер: </label>
+            <b type="text" th:text="*{id}" id="name"></b>
+        </div>
+
+        <div>
+            <label for="surname">Автор: </label>
+            <b type="text" th:text="*{idPerson}" id="surname"></b>
+        </div>
+
+        <div>
+            <label for="patronymic">Текст: </label>
+            <b type="text" th:text="*{text}" id="patronymic"/>
+        </div>
+
+        <div>
+            <label for="birthDate">Чат: </label>
+            <b type="date" th:text="*{chat.getId()}" id="birthDate" th:if="${message.chat!=null}"/>
+        </div>
+
+        <hr/>
+
+    </div>
+
+    <input type="submit" value="Выйти">
+</form>
+
+<form th:method="GET" th:action="@{/message/{id}/edit(id=${message.id})}" th:object="${message}">
+    <input type="submit" value="настроить">
+</form>
+
+</body>
+</html>

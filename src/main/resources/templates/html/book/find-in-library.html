@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title> bc.ru Книги для обмена </title>
+</head>
+<body>
+<table class="books-db">
+    <tr>
+        <th>id</th>
+        <th>Титл</th>
+        <th>Коментарий</th>
+        <th>пользователь</th>
+        <th colspan="2">Функции</th>
+    </tr>
+
+    <th:block th:each="book : ${books}">
+        <tr>
+            <td th:text="${book.id}"/>
+            <td th:text="${book.author}"/>
+            <td th:text="${book.title}"/>
+            <td th:text="${book.comment}"/>
+            <td>
+                <span th:text="${book.library.person.name}" th:if="${book.library != null}"></span>
+                <span th:text="${'-'}" th:if="${book.library == null}"></span>
+            </td>
+            <td>
+                <form th:action="@{/p={idf}/p2={ids}(idf=${idf}, ids=${book.library.person.id})}">
+<!--                    <input type="hidden" name="idLibrary" th:value="${book.library.id}">-->
+                    <input type="submit" value="Написать собственнику">
+                </form>
+<!--                <a th:href="${'p2='+ book.library.person.id}">Написать собственнику</a>-->
+            </td>
+            <td>
+                <form th:action="@{/book/{id}/watch(id=${book.id})}">
+                    <!--                    <input type="hidden" name="idLibrary" th:value="${book.library.id}">-->
+                    <input type="submit" value="Посмотреть книгу">
+                </form>
+<!--                <a th:href="${book.id}">Посмотреть</a>-->
+            </td>
+
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>

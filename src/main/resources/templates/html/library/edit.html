@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:value="${library.name}"> Настройки библиотеки </title>
+</head>
+<body>
+
+<b> Содержание библиотеки </b>
+
+<div th:insert="html/library/one-in-person :: books-in-library"></div>
+
+<hr/>
+
+<div>
+    <form th:object="${library}" th:method="PATCH" th:action="@{/library/l={id}(id=${library.getId()})}">
+
+        <div>
+            <label for="name">Наименование</label>
+            <input type="text" th:field="*{name}" id="name">
+        </div>
+
+        <input type="submit" value="Обновить библиотеку">
+    </form>
+</div>
+
+<div>
+    <form th:method="DELETE" th:action="@{/library/{id}(id=${library.getId()})}">
+        <input type="submit" value="Удалить библиотеку">
+    </form>
+</div>
+
+<hr/>
+
+
+</body>
+</html>

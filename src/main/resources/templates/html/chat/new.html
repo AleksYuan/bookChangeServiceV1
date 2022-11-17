@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Создать чат</title>
+</head>
+<body>
+
+<div>
+    <form th:method="PATCH" th:action="@{new}" th:object="${chat}">
+        <input type="hidden" th:field="*{people}">
+        <label th:for="idPerson">Добавить пользователя (id)</label>
+        <input type="text" th:name="idPerson" th:id="idPerson">
+        <input type="submit" value="добавить пользователя">
+    </form>
+</div>
+
+<div>
+    <form th:method="POST" th:action="@{new}" th:object="${chat}">
+        <input type="hidden" th:field="*{people}">
+
+        <div>
+            <label for="title"> Имя чата </label>
+            <input type="text" th:field="*{title}" id="title">
+        </div>
+        <hr/>
+        <b> Пользователи </b>
+
+        <div th:each="person : *{people}">
+            <a th:text="${person.name + ' ' + person.surname}"><p></p>
+            </a>
+        </div>
+
+        <hr/>
+        <input type="submit" value="Создать чат">
+    </form>
+</div>
+
+</body>
+</html>

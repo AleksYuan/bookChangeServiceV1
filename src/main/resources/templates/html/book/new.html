@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Новая книга</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/book/new}" th:object="${book}">
+
+    <div th:fragment="new-book-data" th:object="${book}">
+
+        <div th:fragment="book-title">
+            <label for="title">Название книги</label>
+            <input type="text" th:field="*{title}" id="title">
+            <div style="color: red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
+        </div>
+
+        <div th:fragment="book-author">
+            <label for="author">Автор</label>
+            <input type="text" th:field="*{author}" id="author">
+            <div style="color: red" th:if="${#fields.hasErrors('author')}" th:errors="*{author}"></div>
+        </div>
+
+        <div th:fragment="book-rate">
+            <label for="rate">Оценка состояния</label>
+            <input type="text" th:field="*{rate}" id="rate">
+            <div style="color: red" th:if="${#fields.hasErrors('rate')}" th:errors="*{rate}"></div>
+        </div>
+
+        <div th:fragment="book-condition">
+            <label for="condition">Описание состояния</label>
+            <textarea type="text" th:field="*{condition}" id="condition"/>
+            <div style="color: red" th:if="${#fields.hasErrors('condition')}" th:errors="*{condition}"></div>
+        </div>
+
+        <div th:fragment="book-coment">
+            <label for="comment">Коментарий</label>
+            <textarea type="text" th:field="*{comment}" id="comment"/>
+        </div>
+
+        <div th:fragment="book-status">
+            <label for="status">Готов отдать/поменять/подарить</label>
+
+            <select th:field="*{status}" id="status">
+                <option th:value="1">да</option>
+                <option th:value="0">Нет</option>
+            </select>
+            <!--        <input type="checkbox" th:field="*{status}" id="status">-->
+        </div>
+    </div>
+
+        <input type="submit" value="Сохранить книгу">
+
+</form>
+
+</body>
+</html>

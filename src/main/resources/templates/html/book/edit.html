@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Настроить книгу</title>
+</head>
+<body>
+
+<form th:method="PATCH" th:action="@{/book/{id}(id=${book.id})}" th:object="${book}">
+
+    <div th:insert="html/book/new :: new-book-data"/>
+
+    <input type="submit" value="Сохранить"/>
+</form>
+
+<form th:method="DELETE" th:action="@{/book/{id}(id=${book.id})}">
+    <input type="submit" value="Удалить книгу">
+</form>
+
+</body>
+</html>

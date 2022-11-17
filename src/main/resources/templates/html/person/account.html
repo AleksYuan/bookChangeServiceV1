@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${person.name + ' ' + person.surname}"></title>
+</head>
+<body>
+
+
+<div>
+    <div>
+        <b> Данные пользователя </b>
+    </div>
+    <p th:text="${person.id + '. ' + person.name + ' ' + person.surname}"></p>
+</div>
+
+<hr/>
+
+<div>
+    <b> Функции </b>
+
+    <div>
+        <form th:action="@{/p={id}/find(id=${person.id})}">
+            <input type="submit" value="Найти пользователя">
+        </form>
+
+        <form th:action="@{/person/{id}/edit(id=${person.id})}">
+            <input type="submit" value="Настроить профиль">
+        </form>
+
+        <form th:action="@{/}">
+            <input type="submit" value="Выйти">
+        </form>
+
+    </div>
+</div>
+
+<hr/>
+
+<div>
+    <b> Библиотека и книги </b>
+
+
+    <div>
+        <form th:action="@{/library/l={id}(id=${library.id})}" th:each="library : ${person.getLibraries()}">
+            <input type="submit" th:value="${libraryStat.index + 1 + ' - '+ library.name}">
+        </form>
+
+        <form th:action="@{p={id}/library/new(id=${person.id})}">
+            <input type="submit" value="Создать библиотеку">
+        </form>
+    </div>
+</div>
+
+<hr/>
+
+<div>
+    <b> Чаты </b>
+
+    <div th:each="chat : ${person.getChats()}">
+        <form th:action="@{/p={id}/chat/{idc}/edit(id=${person.id},idc=${chat.id})}">
+            <b th:text="${chat.title}"></b>
+            <a type="submit" th:each="reader : ${chat.getPeople()}"
+               th:text="${reader.name + ' '}" th:if="${reader.id != person.id}"
+               th:href="@{p={id}/{idc}c={code}(id=${person.id}, idc=${chat.getId()},code=${chat.chatCode})}"></a>
+            <input type="submit" value="настроить">
+        </form>
+
+    </div>
+
+    <form th:action="@{/p={id}/chat/new(id=${person.id})}">
+        <input type="submit" value="Создать чат">
+    </form>
+
+</div>
+</body>
+</html>

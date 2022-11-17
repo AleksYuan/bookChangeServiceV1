@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/css/app/hello.css">
+  <!--        <link rel="stylesheet" href="/../static/css/app/hello.css">-->
+  <title>Title</title>
+</head>
+<body>
+<header class="header">
+  <div class="header-container" th:fragment="header-conteiner">
+    <div class="header-data">
+      <div class="header-left-part" th:fragment="header-left-part">
+        <!-- <img id="book" src="../../../static/img/app/book.png">-->
+        <img id="bookImj" src="/imj/app/book.png" onclick="location.href='/';">
+        <label class="leftText">BooksChange</label>
+      </div>
+
+      <div class="rightBlock" th:fragment="header-right-part">
+        <li>
+          <a class="hHref" href="/person/new">Регистрация</a>
+        </li>
+
+        <li>
+          <a class="hHref" href="/login">Вход</a>
+        </li>
+
+        <li>
+          <a class="hHref" href="/person/all">Пользователи</a>
+        </li>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<div class="centralPart">
+  <div class="centralPartText">
+    <h1 class="bodyh1"> BooksChange - сервис по обмену книг.</h1>
+    <p> Ведите библиотеку, находите книги, пишите отзывы.</p>
+    <p> Находите пользователей, общайтесь, делитесь литературой.</p>
+    <p> Встречайтесь. Делитесь книгами. Дарите эмоции.</p>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-container" th:fragment="footer">
+    <div class="company">
+      <p>© Янаев Алексей 2022</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

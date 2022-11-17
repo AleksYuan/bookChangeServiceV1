@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Книга</title>
+</head>
+<body>
+
+
+<div>
+    <div th:fragment="one-book-data" th:object="${book}">
+
+        <div th:fragment="book-title">
+            <label for="title">Название книги: </label>
+            <b type="text" th:text="*{title}" id="title"/>
+        </div>
+
+        <div th:fragment="book-author">
+            <label for="author">Автор: </label>
+            <b type="text" th:text="*{author}" id="author"></b>
+        </div>
+
+        <div th:fragment="book-rate">
+            <label for="rate">Оценка состояния: </label>
+            <b type="text" th:text="*{rate}" id="rate"></b>
+        </div>
+
+        <div th:fragment="book-condition">
+            <label for="condition">Описание состояния: </label>
+            <b type="text" th:text="*{condition}" id="condition"></b>
+        </div>
+
+        <div th:fragment="book-coment">
+            <label for="comment">Коментарий: </label>
+            <b type="text" th:text="*{comment}" id="comment"></b>
+        </div>
+
+        <div th:fragment="book-status">
+            <label for="status">Готов отдать/поменять/подарить: </label>
+            <b type="text" id="status" th:text="${'Нет'}" th:if="${book.status == false}"/>
+            <b type="text" id="status" th:text="${'Да'}" th:if="${book.status == true}"/>
+        </div>
+    </div>
+</div>
+
+<hr/>
+
+<div>
+
+    <form th:action="@{/book/{id}/edit(id=${book.id})}" th:object="${book}">
+        <input type="submit" value="изменить книгу">
+    </form>
+    <form th:method="DELETE" th:action="@{/book/{id}(id=${book.id})}" th:object="${book}">
+        <input type="submit" value="удалить книгу">
+    </form>
+
+</div>
+</body>
+</html>
