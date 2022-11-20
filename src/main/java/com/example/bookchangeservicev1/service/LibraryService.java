@@ -25,9 +25,9 @@ public class LibraryService {
     @Transactional
     public Library addLibraryForPersonToRepository(Person person) {
         Library current = new Library();
-        libraryRepository.save(current);
-        current.setName(String.format("библиотека", current.getId()));
+        current.setName("библиотека");
         current.setPerson(person);
+        libraryRepository.save(current);
         return current;
     }
 
@@ -50,16 +50,18 @@ public class LibraryService {
         return getOneLibraryByIdFromRepo(id).getPerson().getId();
     }
 
-    @Transactional
+//    @Transactional
     public void addBookToLibrary(Integer libraryId, Book book) {
         Library library = libraryRepository.getReferenceById(libraryId);
         library.getBooks().add(book);
+        libraryRepository.save(library);
     }
 
-    @Transactional
+//    @Transactional
     public void deleteBookFromLibrary(Book book) {
         Library library = book.getLibrary();
-        library.deleteBook(book);
+        library.getBooks().remove(book);
+        libraryRepository.save(library);
     }
 
 }

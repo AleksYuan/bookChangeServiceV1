@@ -20,6 +20,4 @@ public class Chat {
     private List<Person> people = new ArrayList<>();
     @OneToMany(mappedBy = "chat")
     private List<Message> messages;
-    public Chat() {
-    }
 }

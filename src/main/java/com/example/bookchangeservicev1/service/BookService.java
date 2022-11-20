@@ -13,8 +13,6 @@ public class BookService {
 
     private final BookRepository bookRepository;
 
-
-    // убрать , и заменить на @requiredArgs
     public BookService(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
@@ -59,9 +57,10 @@ public class BookService {
         }
     }
 
-    @Transactional
+//    @Transactional
     public void addLibraryToBook(Book book, Library library) {
         book.setLibrary(library);
+        bookRepository.save(book);
     }
 
     public Integer getLibraryIdFromBook(Book book) {

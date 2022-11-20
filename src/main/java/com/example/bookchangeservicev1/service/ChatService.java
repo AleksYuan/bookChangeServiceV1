@@ -43,7 +43,7 @@ public class ChatService {
         chatRepository.save(chat);
     }
 
-    @Transactional
+//    @Transactional
     public Chat generateChatCode(Chat chat) {
         StringBuilder sb = new StringBuilder();
         List<Person> people = chat.getPeople();
@@ -55,9 +55,9 @@ public class ChatService {
             if (counter < size) sb.append("&");
         }
         chat.setChatCode(sb.toString());
+        chatRepository.save(chat);
         return chat;
     }
-
 
     public String generateChatCode(List<Integer> people) {
         StringBuilder sb = new StringBuilder();
@@ -117,6 +117,7 @@ public class ChatService {
        try {
            message.getChat().getMessages().remove(message);
        } catch (NullPointerException e) {
+           System.out.println("сообщение не принадлежит чату");
        }
     }
 

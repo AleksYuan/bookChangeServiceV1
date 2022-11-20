@@ -59,12 +59,4 @@ public class Person {
             joinColumns = @JoinColumn(name = "person_id"),
             inverseJoinColumns = @JoinColumn(name = "chat_id"))
     private List<Chat> chats = new ArrayList<>();
-
-    public Person() {
-    }
-
-    public void addChat(Chat chat) {
-        chats.add(chat);
-    }
-    public void addLibrary(Library library) {libraries.add(library); }
 }

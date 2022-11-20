@@ -76,14 +76,14 @@ public class PersonService {
 //    @Transactional
     public void addLibraryToPerson(Integer id, Library library) {
         Person current = getOnePersonByIdFromRepo(id);
-        current.addLibrary(library);
+        current.getLibraries().add(library);
         personRepository.save(current);
     }
 
 //    @Transactional
     public void addChatToPerson(Chat chat) {
         for (Person person : chat.getPeople()) {
-            person.addChat(chat);
+            person.getChats().add(chat);
             personRepository.save(person);
         }
     }
@@ -91,7 +91,7 @@ public class PersonService {
 //    @Transactional
     public void addNewPersonToOldChat(Person person, Chat chat) {
         if (!chat.getPeople().equals(person)) {
-            person.addChat(chat);
+            person.getChats().add(chat);
             personRepository.save(person);
         }
 
@@ -119,6 +119,4 @@ public class PersonService {
                 sorted(Comparator.comparing(book -> book.isStatus())).
                 collect(Collectors.toList());
     }
-
-
 }

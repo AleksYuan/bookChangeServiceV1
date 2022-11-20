@@ -48,6 +48,12 @@ public class LibraryController {
         return "redirect:/library/{id}";
     }
 
+    @PatchMapping("/l={id}")
+    public String updateLibraryInPerson(@ModelAttribute("library") Library library) {
+        libraryService.updateLibraryInRepo(library);
+        return "redirect:/library/l={id}";
+    }
+
     @DeleteMapping("/{id}")
     public String deleteLibrary(@PathVariable("id") Integer id) {
         Integer personId = libraryService.getPersonIdFromLibraryById(id);

@@ -72,7 +72,7 @@ public class PersonController {
         personValidator.validate(person, bindingResult);
         if (bindingResult.hasErrors()) return "html/person/edit";
         personService.updatePersonInRepo(id, person);
-        return "redirect:/person/all";
+        return "redirect:/p={id}";
     }
 
     @GetMapping("/login")

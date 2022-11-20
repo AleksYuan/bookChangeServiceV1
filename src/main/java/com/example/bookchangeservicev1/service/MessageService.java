@@ -41,7 +41,6 @@ public class MessageService {
         messageRepository.delete(message);
     }
 
-
     @Transactional
     public void deleteAllMessagesByChatIdFromRepo(Chat chat) {
         messageRepository.deleteAllByChat_Id(chat.getId());

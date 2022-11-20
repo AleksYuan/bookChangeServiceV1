@@ -18,6 +18,4 @@ public class Message {
     private Integer idPerson;
     @ManyToOne
     private Chat chat;
-
-    public Message() {}
 }

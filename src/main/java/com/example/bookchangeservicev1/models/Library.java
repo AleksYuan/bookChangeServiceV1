@@ -18,15 +18,4 @@ public class Library {
     private Person person;
     @OneToMany(mappedBy = "library")
     private List<Book> books;
-    public Library(String name) {
-        this.name = name;
-    }
-
-    public Library() {}
-    public void addBook(Book book) {
-        books.add(book);
-    }
-    public void deleteBook(Book book) {
-        books.remove(book);
-    }
 }

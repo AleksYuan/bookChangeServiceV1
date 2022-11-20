@@ -1,6 +1,7 @@
 package com.example.bookchangeservicev1.models;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import javax.validation.constraints.*;
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,6 +30,4 @@ public class Book {
     @ManyToOne
     private Library library;
     private boolean status;
-    public Book() {
-    }
 }
