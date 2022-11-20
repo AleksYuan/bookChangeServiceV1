@@ -1,8 +1,8 @@
 package com.example.bookchangeservicev1.web;
 
-import com.example.bookchangeservicev1.dto.Chat;
-import com.example.bookchangeservicev1.dto.Message;
-import com.example.bookchangeservicev1.dto.Person;
+import com.example.bookchangeservicev1.models.Chat;
+import com.example.bookchangeservicev1.models.Message;
+import com.example.bookchangeservicev1.models.Person;
 import com.example.bookchangeservicev1.service.ChatService;
 import com.example.bookchangeservicev1.service.MessageService;
 import com.example.bookchangeservicev1.service.PersonService;
@@ -21,7 +21,6 @@ public class ChatController {
 
     private final PersonService personService;
     private final ChatService chatService;
-
     private final MessageService messageService;
 
     @Autowired

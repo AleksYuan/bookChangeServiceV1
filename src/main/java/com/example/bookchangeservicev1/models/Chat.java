@@ -1,14 +1,11 @@
-package com.example.bookchangeservicev1.dto;
+package com.example.bookchangeservicev1.models;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.Value;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Getter

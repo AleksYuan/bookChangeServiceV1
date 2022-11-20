@@ -1,10 +1,9 @@
 package com.example.bookchangeservicev1.service;
 
-import com.example.bookchangeservicev1.dto.Chat;
-import com.example.bookchangeservicev1.dto.Message;
-import com.example.bookchangeservicev1.dto.Person;
+import com.example.bookchangeservicev1.models.Chat;
+import com.example.bookchangeservicev1.models.Message;
+import com.example.bookchangeservicev1.models.Person;
 import com.example.bookchangeservicev1.repository.ChatRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -20,7 +19,6 @@ public class ChatService {
 
     private final ChatRepository chatRepository;
 
-    @Autowired
     public ChatService(ChatRepository chatRepository) {
         this.chatRepository = chatRepository;
     }
@@ -88,10 +86,11 @@ public class ChatService {
         return false;
     }
 
-    @Transactional
+//    @Transactional
     public void clearDataInOneChat(Chat chat) {
         chat.getPeople().clear();
         chat.getMessages().clear();
+        chatRepository.save(chat);
     }
 
     @Transactional
@@ -99,16 +98,18 @@ public class ChatService {
         chatRepository.delete(chat);
     }
 
-    @Transactional
+//    @Transactional
     public void addNewMessageToChat(Message message, Long chatId) {
         Chat current = chatRepository.getReferenceById(chatId);
         addNewMessageToChat(message, current);
         message.setChat(current);
+        chatRepository.save(current);
     }
 
-    @Transactional
+//    @Transactional
     public void addNewMessageToChat(Message message, Chat chat) {
         chat.getMessages().add(message);
+        chatRepository.save(chat);
     }
 
     @Transactional

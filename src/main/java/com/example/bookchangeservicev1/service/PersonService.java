@@ -1,22 +1,24 @@
 package com.example.bookchangeservicev1.service;
 
-import com.example.bookchangeservicev1.dto.Chat;
-import com.example.bookchangeservicev1.dto.Library;
-import com.example.bookchangeservicev1.dto.Person;
+import com.example.bookchangeservicev1.models.Book;
+import com.example.bookchangeservicev1.models.Chat;
+import com.example.bookchangeservicev1.models.Library;
+import com.example.bookchangeservicev1.models.Person;
 import com.example.bookchangeservicev1.repository.PersonRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class PersonService {
 
     private final PersonRepository personRepository;
 
-    @Autowired
     public PersonService(PersonRepository personRepository) {
         this.personRepository = personRepository;
     }
@@ -42,7 +44,7 @@ public class PersonService {
         personRepository.save(person);
     }
 
-    @Transactional
+//    @Transactional
     public void updatePersonInRepo(Integer id, Person person) {
         Person old = personRepository.getReferenceById(id);
         old.setName(person.getName());
@@ -54,6 +56,7 @@ public class PersonService {
         old.setPost(person.getPost());
         old.setLogin(person.getLogin());
         old.setPassword(person.getPassword());
+        personRepository.save(old);
     }
 
 
@@ -70,32 +73,51 @@ public class PersonService {
         return -1;
     }
 
-    @Transactional
+//    @Transactional
     public void addLibraryToPerson(Integer id, Library library) {
         Person current = getOnePersonByIdFromRepo(id);
         current.addLibrary(library);
+        personRepository.save(current);
     }
 
-    @Transactional
+//    @Transactional
     public void addChatToPerson(Chat chat) {
         for (Person person : chat.getPeople()) {
             person.addChat(chat);
+            personRepository.save(person);
         }
     }
 
-    @Transactional
+//    @Transactional
     public void addNewPersonToOldChat(Person person, Chat chat) {
-        if (!chat.getPeople().equals(person)) person.addChat(chat);
+        if (!chat.getPeople().equals(person)) {
+            person.addChat(chat);
+            personRepository.save(person);
+        }
+
     }
 
-    @Transactional
+//    @Transactional
     public void deleteOldChatFromPerson(Person person, Chat chat) {
         person.getChats().remove(chat);
+        personRepository.save(person);
     }
 
     @Transactional
     public void deleteChatFromPeople(Chat chat) {
         chat.getPeople().forEach(person -> person.getChats().remove(chat));
+    }
+
+    public List<Book> getAllBooksFromOnePersonById(Integer id) {
+
+        List<Book> res = new ArrayList<>();
+        personRepository.getReferenceById(id).
+                getLibraries().
+                forEach(library -> library.getBooks().
+                        forEach(book -> res.add(book)));
+        return res.stream().
+                sorted(Comparator.comparing(book -> book.isStatus())).
+                collect(Collectors.toList());
     }
 
 

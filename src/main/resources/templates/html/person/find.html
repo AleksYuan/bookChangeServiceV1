@@ -20,7 +20,7 @@
       <td th:text="${person.surname}"/>
       <td th:text="${person.city}"/>
       <td><a th:href="${'p2='+person.id}">Написать</a></td>
-      <td><a th:href="${person.id}">Книги</a></td>
+      <td><a th:href="${'read'+person.id}">Книги</a></td>
     </tr>
   </th:block>
 </table>

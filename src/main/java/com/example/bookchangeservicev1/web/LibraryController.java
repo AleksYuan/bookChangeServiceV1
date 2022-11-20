@@ -1,7 +1,7 @@
 package com.example.bookchangeservicev1.web;
 
-import com.example.bookchangeservicev1.dto.Book;
-import com.example.bookchangeservicev1.dto.Library;
+import com.example.bookchangeservicev1.models.Book;
+import com.example.bookchangeservicev1.models.Library;
 import com.example.bookchangeservicev1.service.BookService;
 import com.example.bookchangeservicev1.service.LibraryService;
 import org.springframework.beans.factory.annotation.Autowired;

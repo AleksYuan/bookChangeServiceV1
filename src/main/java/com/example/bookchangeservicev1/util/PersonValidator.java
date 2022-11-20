@@ -1,13 +1,11 @@
 package com.example.bookchangeservicev1.util;
 
-import com.example.bookchangeservicev1.dto.Person;
+import com.example.bookchangeservicev1.models.Person;
 import com.example.bookchangeservicev1.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-
-import java.util.Optional;
 
 @Component
 public class PersonValidator implements Validator {

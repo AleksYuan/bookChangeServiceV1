@@ -1,7 +1,7 @@
 package com.example.bookchangeservicev1.web;
 
-import com.example.bookchangeservicev1.dto.Library;
-import com.example.bookchangeservicev1.dto.Person;
+import com.example.bookchangeservicev1.models.Library;
+import com.example.bookchangeservicev1.models.Person;
 import com.example.bookchangeservicev1.service.LibraryService;
 import com.example.bookchangeservicev1.service.PersonService;
 import com.example.bookchangeservicev1.util.PersonValidator;
@@ -37,6 +37,12 @@ public class PersonController {
     public String getFormWithAllPeople(Model model) {
         model.addAttribute("people", personService.getAllPersonFromRepo());
         return "html/person/all";
+    }
+
+    @GetMapping("/person/read")
+    public String getFormWithAllPeopleForRead(Model model) {
+        model.addAttribute("people", personService.getAllPersonFromRepo());
+        return "html/person/all-read";
     }
 
     @GetMapping("/person/new")
@@ -104,5 +110,14 @@ public class PersonController {
     public String findPeopleByNameAndSurname(Model model, @PathVariable("idf") Integer id) {
         model.addAttribute("people", personService.getAllPersonFromRepo());
         return "html/person/find";
+    }
+
+    @GetMapping("/p={idf}/read{ids}")
+    public String getPersonBooksForRead(@PathVariable("idf") Integer idf,
+                                        @PathVariable("ids") Integer ids,
+                                        Model model) {
+        model.addAttribute("books", personService.getAllBooksFromOnePersonById(ids));
+        model.addAttribute(idf);
+        return "html/book/read-in-person";
     }
 }

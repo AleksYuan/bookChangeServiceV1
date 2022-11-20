@@ -1,12 +1,10 @@
 package com.example.bookchangeservicev1.web;
 
-import com.example.bookchangeservicev1.dto.Chat;
-import com.example.bookchangeservicev1.dto.Message;
+import com.example.bookchangeservicev1.models.Message;
 import com.example.bookchangeservicev1.service.ChatService;
 import com.example.bookchangeservicev1.service.MessageService;
 import com.example.bookchangeservicev1.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;

@@ -1,9 +1,8 @@
 package com.example.bookchangeservicev1.service;
 
-import com.example.bookchangeservicev1.dto.Chat;
-import com.example.bookchangeservicev1.dto.Message;
+import com.example.bookchangeservicev1.models.Chat;
+import com.example.bookchangeservicev1.models.Message;
 import com.example.bookchangeservicev1.repository.MessageRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -14,7 +13,6 @@ public class MessageService {
 
     private final MessageRepository messageRepository;
 
-    @Autowired
     public MessageService(MessageRepository messageRepository) {
         this.messageRepository = messageRepository;
     }

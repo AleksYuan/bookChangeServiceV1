@@ -1,4 +1,4 @@
-package com.example.bookchangeservicev1.dto;
+package com.example.bookchangeservicev1.models;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,6 +1,6 @@
 package com.example.bookchangeservicev1.repository;
 
-import com.example.bookchangeservicev1.dto.Message;
+import com.example.bookchangeservicev1.models.Message;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

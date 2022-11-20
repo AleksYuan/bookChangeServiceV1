@@ -1,9 +1,8 @@
 package com.example.bookchangeservicev1.service;
 
-import com.example.bookchangeservicev1.dto.Book;
-import com.example.bookchangeservicev1.dto.Library;
+import com.example.bookchangeservicev1.models.Book;
+import com.example.bookchangeservicev1.models.Library;
 import com.example.bookchangeservicev1.repository.BookRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -14,7 +13,8 @@ public class BookService {
 
     private final BookRepository bookRepository;
 
-    @Autowired
+
+    // убрать , и заменить на @requiredArgs
     public BookService(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
@@ -36,7 +36,6 @@ public class BookService {
         return bookRepository.getReferenceById(id);
     }
 
-    @Transactional
     public void updateBookInRepo(Book book) {
         Book old = bookRepository.getReferenceById(book.getId());
         old.setTitle(book.getTitle());
@@ -45,6 +44,7 @@ public class BookService {
         old.setCondition(book.getCondition());
         old.setComment(book.getComment());
         old.setStatus(book.isStatus());
+        bookRepository.save(old);
     }
 
     @Transactional

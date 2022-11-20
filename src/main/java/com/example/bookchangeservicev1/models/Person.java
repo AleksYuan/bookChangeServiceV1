@@ -1,9 +1,8 @@
-package com.example.bookchangeservicev1.dto;
+package com.example.bookchangeservicev1.models;
 
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;

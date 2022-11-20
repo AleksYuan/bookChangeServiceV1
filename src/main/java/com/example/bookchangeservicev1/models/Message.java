@@ -1,11 +1,10 @@
-package com.example.bookchangeservicev1.dto;
+package com.example.bookchangeservicev1.models;
 
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 
 @Entity
 @Getter
